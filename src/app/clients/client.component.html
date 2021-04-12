@@ -1,0 +1,83 @@
+<div>
+  <div>
+    <p-table [value]="clients">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Names</th>
+          <th>Vehicles</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-client>
+        <tr>
+          <td>{{client.names}}</td>
+          <td>
+            <button pButton type="button" (click)="getVehicles(client.id)" icon="pi pi-search" label="Vehicles"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div>
+    <button pButton type="button" (click)="showDialog()" icon="pi pi-save" label="Add new Client"></button>
+  </div>
+  <p-dialog header="Add new client" [(visible)]="newClientDialog">
+    <h5>Names</h5>
+    <input type="text" pInputText [(ngModel)]="names"/>
+    <button pButton type="button" (click)="saveClient()" icon="pi pi-save" label="Save"></button>
+  </p-dialog>
+  <p-dialog header="Vehicles" [(visible)]="vehiclesDialog">
+    <h5>Vehicles</h5>
+    <p-table [value]="vehicles">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Plate</th>
+          <th>Model</th>
+          <th>Repairs</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-vehicle>
+        <tr>
+          <td>{{vehicle.plate}}</td>
+          <td>{{vehicle.model}}</td>
+          <td>
+            <button pButton type="button" (click)="getRepairs(vehicle.id)" icon="pi pi-search" label="Repairs"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <button pButton type="button" (click)="showDialogVehicle()" icon="pi pi-save" label="Add new vehicle"></button>
+  </p-dialog>
+  <p-dialog header="Add new vehicle" [(visible)]="newVehicleDialog">
+    <h5>Plate</h5>
+    <input type="text" pInputText [(ngModel)]="plate"/>
+    <h5>Model</h5>
+    <input type="text" pInputText [(ngModel)]="model"/>
+    <h5></h5>
+    <button pButton type="button" (click)="saveVehicle()" icon="pi pi-save" label="Save"></button>
+  </p-dialog>
+  <p-dialog header="Repairs" [(visible)]="repairsDialog">
+    <h5>Repairs</h5>
+    <p-table [value]="repairs">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Comments</th>
+          <th>Date</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-repair>
+        <tr>
+          <td>{{repair.comments}}</td>
+          <td>{{repair.date}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <button pButton type="button" (click)="showDialogRepair()" icon="pi pi-save" label="Add new repair"></button>
+  </p-dialog>
+  <p-dialog header="Add new repair" [(visible)]="newRepairDialog">
+    <h5>Comments</h5>
+    <input type="text" pInputText [(ngModel)]="comments"/>
+    <h5></h5>
+    <button pButton type="button" (click)="saveRepair()" icon="pi pi-save" label="Save"></button>
+  </p-dialog>
+</div>
+
