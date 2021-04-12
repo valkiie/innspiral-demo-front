@@ -66,7 +66,6 @@ export class ClientComponent implements OnInit {
 
   public saveVehicle() {
     this.clientService.saveVehicle(this.model, this.plate, this.clientId).subscribe(data => {
-      console.log(data);
     });
     this.newVehicleDialog = false;
     this.getVehicles(this.clientId);
@@ -74,7 +73,6 @@ export class ClientComponent implements OnInit {
 
   public saveRepair() {
     this.clientService.saveRepair(this.comments, this.vehicleId).subscribe(data => {
-      console.log(data);
     });
     this.newRepairDialog = false;
     this.getRepairs(this.vehicleId);
