@@ -30,7 +30,6 @@ export class ClientComponent implements OnInit {
 
   ngOnInit() {
     this.getClients();
-    console.log(this.clients);
   }
 
   // get the data from backend service api
